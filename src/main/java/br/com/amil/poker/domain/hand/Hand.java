@@ -4,9 +4,10 @@ import br.com.amil.poker.domain.deck.Card;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
-public class Hand {
+public class Hand implements Iterable<Card> {
     protected static final int HAND_SIZE = 5;
     protected ArrayList<Card> cards = new ArrayList<Card>(HAND_SIZE);
 
@@ -37,5 +38,22 @@ public class Hand {
 
     public List<Card> getCards() {
         return new ArrayList<Card>(this.cards);
+    }
+
+    public int getHandSize () {
+        return this.cards.size();
+    }
+
+    public Card getFirstCard () {
+        return this.cards.size() > 0 ? this.cards.get(0) : null;
+    }
+
+    public Card getLastCard () {
+        return this.cards.size() > 0 ? this.cards.get(getHandSize() - 1) : null;
+    }
+
+    @Override
+    public Iterator<Card> iterator() {
+        return this.cards.iterator();
     }
 }
