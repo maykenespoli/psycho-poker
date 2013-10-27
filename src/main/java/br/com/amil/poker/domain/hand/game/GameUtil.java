@@ -4,7 +4,10 @@ import br.com.amil.poker.domain.deck.Card;
 import br.com.amil.poker.domain.hand.Hand;
 import br.com.amil.poker.domain.hand.OrderedHand;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 final class GameUtil {
 
@@ -41,5 +44,17 @@ final class GameUtil {
         maxSize = Math.max(maxSize, seqSize);
 
         return maxSize == 0 ? 0 : maxSize+1;
+    }
+
+    public static Map<Card.CardNumber, List<Card>> cardsByRank(OrderedHand hand) {
+        Map<Card.CardNumber, List<Card>> cardsByNumber = new HashMap<Card.CardNumber, List<Card>>(5);
+        for (Card card : hand) {
+            if ( !cardsByNumber.containsKey(card.getNumber()) ) {
+                cardsByNumber.put(card.getNumber(), new LinkedList<Card>());
+            }
+            cardsByNumber.get(card.getNumber()).add(card);
+        }
+
+        return cardsByNumber;
     }
 }
