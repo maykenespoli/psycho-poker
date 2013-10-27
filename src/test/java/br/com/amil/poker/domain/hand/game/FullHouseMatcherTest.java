@@ -21,10 +21,9 @@ public class FullHouseMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        List<Game> games = matcher.matches(hand);
+        Game game = matcher.matches(hand);
 
-        Assert.assertNotNull(games);
-        Assert.assertTrue(games.size() == 1);
+        Assert.assertNotNull(game);
     }
 
     @Test
@@ -37,9 +36,9 @@ public class FullHouseMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        List<Game> games = matcher.matches(hand);
+        Game game = matcher.matches(hand);
 
-        Assert.assertNull(games);
+        Assert.assertNull(game);
     }
 
 }

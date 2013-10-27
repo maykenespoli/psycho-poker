@@ -3,12 +3,13 @@ package br.com.amil.poker.domain.hand.game;
 import br.com.amil.poker.domain.deck.Card;
 import br.com.amil.poker.domain.hand.OrderedHand;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 public class FourOfAKindMatcher implements GameMatcher {
 
     @Override
-    public List<Game> matches(OrderedHand hand) {
+    public Game matches(OrderedHand hand) {
         Game foak = null;
 
         Map<Card.CardNumber, List<Card>>  cardsByNumber = GameUtil.cardsByRank(hand);
@@ -22,6 +23,6 @@ public class FourOfAKindMatcher implements GameMatcher {
             }
         }
 
-        return foak == null ? null : Arrays.asList(foak);
+        return foak;
     }
 }

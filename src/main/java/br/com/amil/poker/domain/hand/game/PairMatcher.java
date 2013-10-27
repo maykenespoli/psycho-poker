@@ -3,14 +3,13 @@ package br.com.amil.poker.domain.hand.game;
 import br.com.amil.poker.domain.deck.Card;
 import br.com.amil.poker.domain.hand.OrderedHand;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public class PairMatcher implements GameMatcher {
 
     @Override
-    public List<Game> matches(OrderedHand hand) {
+    public Game matches(OrderedHand hand) {
         Game pair = null;
         int pairCount = 0;
         Map<Card.CardNumber,List<Card>> cardsByRank = GameUtil.cardsByRank(hand);
@@ -27,6 +26,6 @@ public class PairMatcher implements GameMatcher {
             pair = new Game(hand, Game.GameType.TWO_PAIRS);
         }
 
-        return pair == null ? null : Arrays.asList(pair);
+        return pair;
     }
 }

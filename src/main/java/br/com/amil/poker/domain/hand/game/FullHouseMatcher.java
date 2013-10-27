@@ -3,14 +3,13 @@ package br.com.amil.poker.domain.hand.game;
 import br.com.amil.poker.domain.deck.Card;
 import br.com.amil.poker.domain.hand.OrderedHand;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public class FullHouseMatcher implements GameMatcher {
 
     @Override
-    public List<Game> matches(OrderedHand hand) {
+    public Game matches(OrderedHand hand) {
         Game fh = null;
 
         Map<Card.CardNumber,List<Card>> cardsByRank = GameUtil.cardsByRank(hand);
@@ -21,6 +20,6 @@ public class FullHouseMatcher implements GameMatcher {
             }
         }
 
-        return fh == null ? null : Arrays.asList(fh);
+        return fh;
     }
 }
