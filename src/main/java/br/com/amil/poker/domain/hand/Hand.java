@@ -2,10 +2,7 @@ package br.com.amil.poker.domain.hand;
 
 import br.com.amil.poker.domain.deck.Card;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Hand implements Iterable<Card> {
     protected static final int HAND_SIZE = 5;
@@ -21,6 +18,10 @@ public class Hand implements Iterable<Card> {
         this.cards.addAll(Arrays.asList(cards));
     }
 
+    public Hand(Collection<Card> cards) {
+        this.cards.addAll(cards);
+    }
+
     public Hand addCard(Card card) {
         if ( cards.size() < HAND_SIZE ) {
             cards.add(card);
@@ -31,8 +32,15 @@ public class Hand implements Iterable<Card> {
         return this;
     }
 
+    public Hand addCards(Collection<Card> cards) {
+        for (Card card : cards) {
+            addCard(card);
+        }
+        return this;
+    }
+
     public Hand setCardAt(int pos, Card card) {
-        this.cards.add(pos, card);
+        this.cards.set(pos, card);
         return this;
     }
 
@@ -52,8 +60,21 @@ public class Hand implements Iterable<Card> {
         return this.cards.size() > 0 ? this.cards.get(getHandSize() - 1) : null;
     }
 
+    public void discard(Card ... cards) {
+        discard(Arrays.asList(cards));
+    }
+
+    public void discard(Collection<Card> cards) {
+        this.cards.removeAll(cards);
+    }
+
     @Override
     public Iterator<Card> iterator() {
         return this.cards.iterator();
+    }
+
+    @Override
+    public String toString() {
+        return cards.toString();
     }
 }

@@ -2,13 +2,19 @@ package br.com.amil.poker.domain.hand;
 
 import br.com.amil.poker.domain.deck.Card;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class OrderedHand extends Hand {
 
     public OrderedHand(Hand hand) {
-        this(hand.getCards().toArray(new Card[]{}));
+        this(hand.getCards());
+    }
+
+    public OrderedHand(Collection<Card> cards) {
+        super(cards);
+        order();
     }
 
     public OrderedHand(Card... cards) {

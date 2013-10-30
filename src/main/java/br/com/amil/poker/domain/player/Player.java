@@ -15,4 +15,6 @@ public interface Player {
     void addCards(Card ... cards);
 
     Game showGame();
+
+    void addCards(Collection<Card> cards);
 }

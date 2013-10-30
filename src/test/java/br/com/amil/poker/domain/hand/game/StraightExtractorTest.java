@@ -5,11 +5,9 @@ import br.com.amil.poker.domain.hand.OrderedHand;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
+public class StraightExtractorTest {
 
-public class StraightMatcherTest {
-
-    StraightMatcher matcher = new StraightMatcher();
+    StraightExtractor matcher = new StraightExtractor();
 
     @Test
     public void simpleStraight() {
@@ -21,7 +19,7 @@ public class StraightMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNotNull(game);
     }
@@ -36,7 +34,7 @@ public class StraightMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNotNull(game);
     }
@@ -51,7 +49,7 @@ public class StraightMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNull(game);
     }

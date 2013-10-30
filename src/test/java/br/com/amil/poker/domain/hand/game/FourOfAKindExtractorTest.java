@@ -5,11 +5,9 @@ import br.com.amil.poker.domain.hand.OrderedHand;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
+public class FourOfAKindExtractorTest {
 
-public class FourOfAKindMatcherTest {
-
-    FourOfAKindMatcher matcher = new FourOfAKindMatcher();
+    FourOfAKindExtractor matcher = new FourOfAKindExtractor();
 
     @Test
     public void fourOfAKingTest() {
@@ -21,7 +19,7 @@ public class FourOfAKindMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNotNull(game);
     }
@@ -36,7 +34,7 @@ public class FourOfAKindMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNull(game);
     }

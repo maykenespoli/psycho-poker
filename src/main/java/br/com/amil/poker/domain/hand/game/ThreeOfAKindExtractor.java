@@ -6,10 +6,10 @@ import br.com.amil.poker.domain.hand.OrderedHand;
 import java.util.List;
 import java.util.Map;
 
-public class ThreeOfAKindMatcher implements GameMatcher {
+public class ThreeOfAKindExtractor implements GameExtractor {
 
     @Override
-    public Game matches(OrderedHand hand) {
+    public Game extract(OrderedHand hand) {
         Game toak = null;
 
         Map<Card.CardNumber,List<Card>> cardsByRank = GameUtil.cardsByRank(hand);

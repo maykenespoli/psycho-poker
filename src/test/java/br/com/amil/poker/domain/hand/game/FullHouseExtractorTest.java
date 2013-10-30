@@ -5,11 +5,9 @@ import br.com.amil.poker.domain.hand.OrderedHand;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
+public class FullHouseExtractorTest {
 
-public class FullHouseMatcherTest {
-
-    FullHouseMatcher matcher = new FullHouseMatcher();
+    FullHouseExtractor matcher = new FullHouseExtractor();
 
     @Test
     public void fullHouseTest() {
@@ -21,7 +19,7 @@ public class FullHouseMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNotNull(game);
     }
@@ -36,7 +34,7 @@ public class FullHouseMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNull(game);
     }

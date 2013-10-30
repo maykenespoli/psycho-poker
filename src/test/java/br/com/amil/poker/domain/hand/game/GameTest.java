@@ -167,7 +167,8 @@ public class GameTest {
 
         Game game = Game.findBestGameFor(hand);
 
-        Assert.assertNull(game);
+        Assert.assertNotNull(game);
+        Assert.assertEquals(Game.GameType.HIGHEST_CARD, game.getType());
 
     }
 

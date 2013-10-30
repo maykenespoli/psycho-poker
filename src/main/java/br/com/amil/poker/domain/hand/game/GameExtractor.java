@@ -2,8 +2,8 @@ package br.com.amil.poker.domain.hand.game;
 
 import br.com.amil.poker.domain.hand.OrderedHand;
 
-public interface GameMatcher {
+public interface GameExtractor {
 
-    Game matches(OrderedHand hand);
+    Game extract(OrderedHand hand);
 
 }

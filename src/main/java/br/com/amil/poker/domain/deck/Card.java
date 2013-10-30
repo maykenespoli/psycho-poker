@@ -18,11 +18,42 @@ public class Card {
         return number;
     }
 
+    @Override
+    public String toString() {
+        return number.toString() + suit;
+    }
+
     public enum CardSuit {
         SPADES, HEARTS, DIAMONDS, CLUBS;
+
+        private String name;
+
+        private CardSuit() {
+            name = this.name().substring(0,1);
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 
     public enum CardNumber {
-        AS, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
+        AS("A"), TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN("T"), JACK("J"), QUEEN("Q"), KING("K");
+
+        private String name;
+
+        private CardNumber() {
+            name = String.valueOf(this.ordinal() + 1);
+        }
+
+        private CardNumber(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 }

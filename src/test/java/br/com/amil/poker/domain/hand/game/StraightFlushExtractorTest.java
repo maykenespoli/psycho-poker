@@ -5,11 +5,9 @@ import br.com.amil.poker.domain.hand.OrderedHand;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
+public class StraightFlushExtractorTest {
 
-public class StraightFlushMatcherTest {
-
-    StraightFlushMatcher matcher = new StraightFlushMatcher();
+    StraightFlushExtractor matcher = new StraightFlushExtractor();
 
     @Test
     public void simpleStraightFlush() {
@@ -21,9 +19,10 @@ public class StraightFlushMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNotNull(game);
+        Assert.assertEquals(Game.GameType.STRAIGHT_FLUSH, game.getType());
     }
 
     @Test
@@ -36,9 +35,10 @@ public class StraightFlushMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNotNull(game);
+        Assert.assertEquals(Game.GameType.STRAIGHT_FLUSH, game.getType());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class StraightFlushMatcherTest {
 
         OrderedHand hand = new OrderedHand(c1,c2,c3,c4,c5);
 
-        Game game = matcher.matches(hand);
+        Game game = matcher.extract(hand);
 
         Assert.assertNull(game);
     }

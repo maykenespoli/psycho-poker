@@ -6,10 +6,10 @@ import br.com.amil.poker.domain.hand.OrderedHand;
 import java.util.List;
 import java.util.Map;
 
-public class FullHouseMatcher implements GameMatcher {
+public class FullHouseExtractor implements GameExtractor {
 
     @Override
-    public Game matches(OrderedHand hand) {
+    public Game extract(OrderedHand hand) {
         Game fh = null;
 
         Map<Card.CardNumber,List<Card>> cardsByRank = GameUtil.cardsByRank(hand);
